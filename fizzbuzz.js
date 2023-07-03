@@ -10,16 +10,18 @@ function fizzbuzz() {
 }
 
 function fizzbuzzinput(max_no) {
+    divisor_map = {3:"Jack",5:"Chit",7:"Lyric",11:"Chhavi",13:"Connor",19:"Kevin"};
     for(var i = 1; i <= max_no; i++) {
         let out_arr = [];
 
         // Standard fizz-buzz checks
         if(i%11 !== 0){
-            if(i%3 === 0) out_arr.push("Fizz");
-            if(i%5 === 0) out_arr.push("Buzz");
-            if(i%7 === 0) out_arr.push("Bang");
+            if(i%3 === 0) out_arr.push(divisor_map[3]);
+            if(i%5 === 0) out_arr.push(divisor_map[5]);
+            if(i%7 === 0) out_arr.push(divisor_map[7]);
+            if(i%19 === 0) out_arr.push(divisor_map[19]);
         }else {
-            out_arr.push("Bong");
+            out_arr.push(divisor_map[11]);
         }
 
         if(i%13 === 0) {
@@ -29,12 +31,12 @@ function fizzbuzzinput(max_no) {
             // Insert Fezz in relevant position
             while(!add_flag && j < out_arr.length){
                 if(out_arr[j][0] === 'B'){
-                    out_arr.splice(j,0,"Fezz");
+                    out_arr.splice(j,0,divisor_map[13]);
                     add_flag = true;
                 }
                 j++;
             }
-            if(!add_flag) out_arr.push("Fezz");
+            if(!add_flag) out_arr.push(divisor_map[13]);
         }
         if(i%17 === 0) out_arr = out_arr.reverse();
 
