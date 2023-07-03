@@ -9,20 +9,24 @@ function fizzbuzz() {
     }
 }
 
-// Part 2
-function fizzbuzzplus() {
-    for(var i = 1; i <= 1000; i++) {
+function fizzbuzzinput(max_no) {
+    for(var i = 1; i <= max_no; i++) {
         let out_arr = [];
+
+        // Standard fizz-buzz checks
         if(i%11 !== 0){
             if(i%3 === 0) out_arr.push("Fizz");
             if(i%5 === 0) out_arr.push("Buzz");
             if(i%7 === 0) out_arr.push("Bang");
-        }else{
+        }else {
             out_arr.push("Bong");
         }
+
         if(i%13 === 0) {
             let add_flag = false;
             let j = 0;
+
+            // Insert Fezz in relevant position
             while(!add_flag && j < out_arr.length){
                 if(out_arr[j][0] === 'B'){
                     out_arr.splice(j,0,"Fezz");
@@ -39,6 +43,14 @@ function fizzbuzzplus() {
     }
 }
 
-// Now, we run the main function:
-fizzbuzzplus();
+// Input jargon courtesy of codecademy
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+let max_no = 0;
+readline.question('Number max: ', n => {
+    fizzbuzzinput(n);
+    readline.close();
+});
 
