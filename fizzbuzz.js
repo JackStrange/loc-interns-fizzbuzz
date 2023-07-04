@@ -10,7 +10,7 @@ function fizzbuzz() {
 }
 
 function fizzbuzzinput(max_no) {
-    divisor_map = {3:"Jack",5:"Chit",7:"Lyric",11:"Chhavi",13:"Connor",19:"Kevin"};
+    divisor_map = {3:"Fizz",5:"Buzz",7:"Bang",11:"Bong",13:"Fezz"};
     for(var i = 1; i <= max_no; i++) {
         let out_arr = [];
 
@@ -19,24 +19,20 @@ function fizzbuzzinput(max_no) {
             if(i%3 === 0) out_arr.push(divisor_map[3]);
             if(i%5 === 0) out_arr.push(divisor_map[5]);
             if(i%7 === 0) out_arr.push(divisor_map[7]);
-            if(i%19 === 0) out_arr.push(divisor_map[19]);
         }else {
             out_arr.push(divisor_map[11]);
         }
 
         if(i%13 === 0) {
-            let add_flag = false;
-            let j = 0;
-
-            // Insert Fezz in relevant position
-            while(!add_flag && j < out_arr.length){
-                if(out_arr[j][0] === 'B'){
-                    out_arr.splice(j,0,divisor_map[13]);
-                    add_flag = true;
+            // Insert "Fezz" into relevant position
+            let b_index = -1;
+            for(let i = 0; i < out_arr.length; i++){
+                if (out_arr[i][0] === 'B') {
+                    b_index = i;
                 }
-                j++;
             }
-            if(!add_flag) out_arr.push(divisor_map[13]);
+            if(b_index !== -1) out_arr.splice(b_index,0,divisor_map[13]);
+            else out_arr.push(divisor_map[13]);
         }
         if(i%17 === 0) out_arr = out_arr.reverse();
 
@@ -50,7 +46,6 @@ const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
 });
-let max_no = 0;
 readline.question('Number max: ', n => {
     fizzbuzzinput(n);
     readline.close();
